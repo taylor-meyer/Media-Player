@@ -1,0 +1,145 @@
+[{
+    "remoteMethod": "DeleteSong",
+    "objectName": "PlaylistServices",
+    "Params": [
+        
+        
+            {"name": "user",
+            "type": "Integer"},
+        
+        
+            {"name": "playlistName",
+            "type": "String"},
+
+            {"name": "songID",
+                "type": "String"}
+ ],
+
+    "callSemantic":"Maybe",
+    "returnType":"String"
+},
+{
+    "remoteMethod": "registerAccount",
+    "objectName": "LoginServices",
+    "Params": [
+        
+        
+            {"name": "username",
+            "type": "String"},
+            {"name": "password",
+                "type": "String"}
+
+ ],
+
+    "callSemantic":"Maybe",
+    "returnType":"String"
+},
+
+  {
+    "remoteMethod": "validateAccount",
+    "objectName": "LoginServices",
+    "Params": [
+
+
+      {
+        "name": "username",
+        "type": "String"
+      },
+      {
+        "name": "password",
+        "type": "String"
+      }
+
+    ],
+
+    "callSemantic": "Maybe",
+    "returnType": "String"
+  },
+
+  {
+    "remoteMethod": "deserializeAccounts",
+    "objectName": "LoginServices",
+    "Params": [],
+
+    "callSemantic": "Maybe",
+    "returnType": "void"
+  },
+
+  {
+    "remoteMethod": "save",
+    "objectName": "LoginServices",
+    "Params": [],
+
+    "callSemantic": "Maybe",
+    "returnType": "void"
+  },
+
+  {
+    "remoteMethod": "addPlaylistToAccount",
+    "objectName": "PlayerWindow",
+    "Params": [
+      {
+        "name": "playlistName",
+        "type": "String"
+      }
+    ],
+
+    "callSemantic": "Maybe",
+    "returnType": "void"
+  },
+
+  {
+    "remoteMethod": "findSong",
+    "objectName": "PlayerWindow",
+    "Params": [
+      {
+        "name": "toSearch",
+        "type": "String"
+      },
+      {
+        "name": "song",
+        "type": "boolean"
+      }
+    ],
+
+    "callSemantic": "Maybe",
+    "returnType": "MusicMeta"
+  },
+
+  {
+    "remoteMethod": "fillRand15",
+    "objectName": "PlayerWindow",
+    "Params": [],
+
+    "callSemantic": "Maybe",
+    "returnType": "void"
+  },
+
+  {
+    "remoteMethod": "showUserPlaylists",
+    "objectName": "PlayerWindow",
+    "Params": [],
+
+    "callSemantic": "Maybe",
+    "returnType": "void"
+  },
+
+  {
+    "remoteMethod": "deleteEntirePlaylist",
+    "objectName": "PlayerWindow",
+    "Params": [],
+
+    "callSemantic": "Maybe",
+    "returnType": "void"
+  },
+
+{
+    "remoteMethod":"getSongChunk",
+    "objectName":"SongDispatcher",
+    "param":
+      {
+          "song":490183,
+          "fragment":2
+      }
+}
+]
