@@ -1,9 +1,3 @@
-/*
-Taylor Meyer
-327 Media Player
-Fall 2019
-Dr. Oscar Morales Ponce
-*/
 
 package pkg327;
 
