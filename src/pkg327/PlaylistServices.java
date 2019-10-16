@@ -3,6 +3,17 @@ package pkg327;
 
 //import java.util.ArrayList;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
+
+
 /**
  * Stores references to current logged in user and the list of
  * that user's playlists.
@@ -28,15 +39,22 @@ public class PlaylistServices {
      * Creates an empty playlist with its name passed as a parameter
      * @param s name of playlist to be created
      */
-    public void createPlaylist(String playlist_name, Account A) {
+    public void createPlaylist(String playlist_name, String account_id) {
+        
+        Account A = this.getAccount(account_id);
+        
         A.getPlaylists().add(new Playlist(playlist_name));
+        
     }
     
     /**
      * Delete a playlist based on the playlist's name.
      * @param s 
      */
-    public void deletePlaylist(String playlist_name, Account A) {
+    public void deletePlaylist(String playlist_name, String account_id) {
+        
+        Account A = this.getAccount(account_id);
+        
         for (Playlist p : A.getPlaylists()) {
             if (p.getName().toLowerCase().equals(playlist_name.toLowerCase())) {
                 A.getPlaylists().remove(p);
@@ -50,7 +68,10 @@ public class PlaylistServices {
      * add function.
      * @param i id of the song
      */
-    public void addSongToPlaylist(int id, String playlist_name, Account A) {
+    public void addSongToPlaylist(int id, String playlist_name, String account_id) {
+        
+        Account A = this.getAccount(account_id);
+        
         for (Playlist p : A.getPlaylists()) {
             if (p.getName().toLowerCase().equals(playlist_name.toLowerCase())) {
                 p.addSong(id);
@@ -65,7 +86,10 @@ public class PlaylistServices {
      * @param s the name of the playlist
      * @param i the id of the song to be removed
      */
-    public void removeSongFromPlaylist(int id, String playlist_name, Account A) {
+    public void removeSongFromPlaylist(int id, String playlist_name, String account_id) {
+        
+        Account A = this.getAccount(account_id);
+        
         for (Playlist p : A.getPlaylists()) {
             if (p.getName().toLowerCase().equals(playlist_name.toLowerCase())) {
                 p.removeSong(id);
@@ -79,7 +103,10 @@ public class PlaylistServices {
      * @param i the index
      * @return Playlist
      */
-    public Playlist getPlaylist(int i, Account A) {
+    public Playlist getPlaylist(int i, String account_id) {
+        
+        Account A = this.getAccount(account_id);
+        
         return A.getPlaylists().get(i);
     }
     
@@ -89,7 +116,10 @@ public class PlaylistServices {
      * @param s the name
      * @return Playlist
      */
-    public Playlist getPlaylist(String playlist_name, Account A) {
+    public Playlist getPlaylist(String playlist_name, String account_id) {
+        
+        Account A = this.getAccount(account_id);
+        
         for (Playlist p : A.getPlaylists()) {
             if (p.getName().toLowerCase().equals(playlist_name.toLowerCase())) {
                 return p;
@@ -98,11 +128,24 @@ public class PlaylistServices {
         return null;
     }
     
-    /*
-    public void setCurrentAccount(Account A) {
-        this.current_account = A;
-        this.playlists = A.getPlaylists();
-        System.out.println(this.current_account.getUsername());
+    private Account getAccount(String id) {
+        
+        TypeToken<List<Account>> token = new TypeToken<List<Account>>() {};
+        ArrayList<Account> account_list = new ArrayList();
+        
+        try {
+            // File read object.
+            Reader read = new FileReader("accounts.json");
+            // GSON
+            account_list = new Gson().fromJson(read, token.getType());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        for (Account A : account_list) {
+            if (A.getID().equals(id))
+                return A;
+        }
+        return null;
     }
-    */
 }
