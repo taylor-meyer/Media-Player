@@ -1,6 +1,7 @@
 
 package pkg327;
 
+import com.google.gson.JsonObject;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,24 +18,13 @@ public class Driver extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
         
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
+        LoginServices ls = new LoginServices();
         
-        Scene scene = new Scene(root, 300, 250);
+        LoginWindow lw = new LoginWindow();
         
-        primaryStage.setTitle("Hello World!");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        // Break
+        int i = 0;
     }
 
     /**

@@ -1,0 +1,61 @@
+/*
+Taylor Meyer
+327 Media Player
+Fall 2019
+Dr. Oscar Morales Ponce
+*/
+
+package pkg327;
+
+import java.util.ArrayList;
+
+/**
+ * Stores the username, password, and their ArrayList of playlists.
+ * @author Taylor Meyer
+ */
+public class Account {
+    
+    // username
+    private String username;
+    // password
+    private String password;
+    // the ArrayList of Playlist objects.
+    private ArrayList<Playlist> playlists;
+    
+    /**
+     * Constructor.
+     * @param username
+     * @param password
+     * @param playlists 
+     */
+    public Account(String username, String password, ArrayList<Playlist> playlists)
+    {
+        this.username = username;
+        this.password = password;
+        this.playlists = playlists;
+    }
+    
+    /**
+     * Returns the username.
+     * @return 
+     */
+    public String getUsername(){
+        return this.username;
+    }
+    
+    /**
+     * Returns the password.
+     * @return 
+     */
+    public String getPassword(){
+        return this.password;
+    }
+    
+    /**
+     * Returns the ArrayList of Playlist objects.
+     * @return 
+     */
+    public ArrayList<Playlist> getPlaylists() {
+        return this.playlists;
+    }
+}
