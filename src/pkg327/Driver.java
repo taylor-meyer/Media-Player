@@ -31,6 +31,33 @@ public class Driver extends Application {
         System.out.println("Name:" + myAccount.getPassword());
         
         
+        String playlist_name = "playlistnumber2";
+        ////////////////////////////////////////////////////////////
+        
+        
+        String[] params = {playlist_name, myAccount};
+        
+        JsonObject result = p.synchExecution("createPlaylist", params);
+        String s = result.get("ret").getAsString();
+        boolean answer = Boolean.parseBoolean(s);
+        
+        if(Boolean.parseBoolean(s))
+        {
+            System.out.println("Return from proxy: " + answer + ": Account found");
+            this.validated_user = username;
+            //this.close();
+        }
+        else
+        {
+            System.out.println("Return from proxy: " + answer + ": Account not found");
+            showMessage(invalid_login);
+        }
+        
+        
+        
+        ////////////////////////////////////////////////////////////////////
+        
+        
         
         // Break
         int i = 0;
