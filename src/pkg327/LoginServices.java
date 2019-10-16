@@ -29,7 +29,7 @@ public class LoginServices {
     // Type to load the list of Accounts from JSON file.
     private TypeToken<List<Account>> token = new TypeToken<List<Account>>() {};
     // The ArrayList of Accounts.
-    List<Account> accountList;
+    private ArrayList<Account> account_list;
     
     // User that successfull logged in.
     private Account current_account;
@@ -50,7 +50,7 @@ public class LoginServices {
             // File read object.
             Reader read = new FileReader("accounts.json");
             // GSON
-            accountList = new Gson().fromJson(read, token.getType());
+            account_list = new Gson().fromJson(read, token.getType());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -64,7 +64,7 @@ public class LoginServices {
      */
     public boolean validateAccount(String username, String password){
         
-        for(Account A : accountList){
+        for(Account A : account_list){
             if(A.getUsername().equals(username)){
                 if(A.getPassword().equals(password)){
                     this.current_account = A;
@@ -88,7 +88,7 @@ public class LoginServices {
         // Create new account object with empty ArrayList of playlists.
         Account A = new Account(username, password, new ArrayList<Playlist>());
         // Add it to the ArrayList of Accounts.
-        this.accountList.add(A);
+        this.account_list.add(A);
         // Save to file
         this.save();
         return true;
@@ -102,7 +102,7 @@ public class LoginServices {
         // Create JSON to save to file using GSON.
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         // Create JSON with GSON.
-        String jsonLine = gson.toJson(accountList);
+        String jsonLine = gson.toJson(account_list);
         try{
             // Create writer, write, close.
             FileWriter write = new FileWriter("accounts.json", false);
@@ -114,7 +114,7 @@ public class LoginServices {
     }
     
     public void setCurrentAccount(String s) {
-        for(Account A : this.accountList) {
+        for(Account A : this.account_list) {
             if(A.getUsername().equals(s)) {
                 this.current_account = A;
                 System.out.println(A.getUsername());
@@ -127,10 +127,14 @@ public class LoginServices {
     }
     
     private boolean accountAlreadyExists(String username) {
-        for(Account A : this.accountList) {
+        for(Account A : this.account_list) {
             if(A.getUsername().equals(username))
                 return true;
         }
         return false;
+    }
+    
+    public ArrayList<Account> getAccounts() {
+        return this.account_list;
     }
 }
