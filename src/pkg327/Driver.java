@@ -21,10 +21,21 @@ public class Driver extends Application {
         
         LoginServices ls = new LoginServices();
         
-        LoginWindow lw = new LoginWindow();
+        Account myAccount = null;
+        for (Account A : ls.getAccounts()) {
+            if (A.getUsername().equals("TaylorM"))
+                myAccount = A;
+        }
+
+        System.out.println("Name:" + myAccount.getUsername());
+        System.out.println("Name:" + myAccount.getPassword());
         
         // Break
         int i = 0;
+        
+        System.exit(0);
+        
+        
     }
 
     /**
