@@ -141,26 +141,6 @@
           "song":490183,
           "fragment":2
       }
-},
-  {
-    "remoteMethod": "createPlaylist",
-    "objectName": "PlaylistServices",
-    "Params": [
-
-
-      {
-        "name": "playlist_name",
-        "type": "String"
-      },
-      {
-        "name": "A",
-        "type": "Account"
-      }
-
-    ],
-
-    "callSemantic": "Maybe",
-    "returnType": "void"
-  },
+}
 
 ]

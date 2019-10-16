@@ -19,6 +19,8 @@ public class Account {
     private String username;
     // password
     private String password;
+    // ID
+    private String id;
     // the ArrayList of Playlist objects.
     private ArrayList<Playlist> playlists;
     
@@ -51,11 +53,19 @@ public class Account {
         return this.password;
     }
     
+    public void setID(String id) {
+        this.id = id;
+    }
+    
+    public String getID() {
+        return this.id;
+    }
+    
     /**
      * Returns the ArrayList of Playlist objects.
      * @return 
      */
-    public ArrayList<Playlist> getPlaylists() {
+    public ArrayList<Playlist> getPlaylists() { 
         return this.playlists;
     }
 }
