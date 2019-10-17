@@ -42,7 +42,7 @@ public class Driver extends Application {
     
         String[] params = {testString, myAccount.getID()};
         
-        JsonObject result = p.synchExecution("createPlaylist", params);
+        JsonObject result = p.synchExecution("deletePlaylist", params);
         String s = result.get("ret").getAsString();
         
         System.out.println(s);
@@ -65,7 +65,7 @@ public class Driver extends Application {
 //        stage.setScene(scene);
 //        stage.show();
 
-        //System.exit(0);
+        System.exit(0);
     }
 
     /**
