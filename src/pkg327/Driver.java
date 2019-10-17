@@ -31,22 +31,39 @@ public class Driver extends Application {
                 myAccount = A;
         }
 
-        //System.out.println("Name:" + myAccount.getUsername());
-        //System.out.println("Name:" + myAccount.getPassword());
+        System.out.println("Name:" + myAccount.getUsername());
+        System.out.println("Name:" + myAccount.getPassword());
         
         // Breakpoint
         int i = 0;
         
-        GridPane gp = new GridPane();
         
-        TitleBar tb = new TitleBar(myAccount.getUsername());
+        String testString = "test";
+    
+        String[] params = {testString, myAccount.getID()};
         
-        gp.add(tb, 0, 0);
-        Scene scene = new Scene(gp,300,300);
+        JsonObject result = p.synchExecution("createPlaylist", params);
+        String s = result.get("ret").getAsString();
         
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
+        System.out.println(s);
+
+        
+        
+        
+        
+        
+        
+        
+//        GridPane gp = new GridPane();
+//        
+//        TitleBar tb = new TitleBar(myAccount.getUsername());
+//        
+//        gp.add(tb, 0, 0);
+//        Scene scene = new Scene(gp,300,300);
+//        
+//        Stage stage = new Stage();
+//        stage.setScene(scene);
+//        stage.show();
 
         //System.exit(0);
     }
