@@ -34,29 +34,20 @@ public class Driver extends Application {
         //System.out.println("Name:" + myAccount.getUsername());
         //System.out.println("Name:" + myAccount.getPassword());
         
-        String s = "test";
-        
         // Breakpoint
         int i = 0;
         
-        //ps.createPlaylist(s, myAccount.getID());
-        //ps.deletePlaylist(s, myAccount.getID());
-        //ps.addSongToPlaylist(5565, "a", myAccount.getID());
-        //ps.removeSongFromPlaylist(555, "a", myAccount.getID());
-        
-        
-        
         GridPane gp = new GridPane();
         
+        TitleBar tb = new TitleBar(myAccount.getUsername());
         
-        PlayButton pb = new PlayButton();
-        
-        gp.add(pb, 0, 0);
+        gp.add(tb, 0, 0);
         Scene scene = new Scene(gp,300,300);
         
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
+
         //System.exit(0);
     }
 
