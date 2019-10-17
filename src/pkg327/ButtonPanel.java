@@ -1,12 +1,16 @@
 
 package pkg327;
 
+import com.google.gson.JsonObject;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
  *
@@ -14,7 +18,9 @@ import javafx.scene.layout.VBox;
  */
 public class ButtonPanel extends VBox{
     
-    public ButtonPanel() {
+    String playlist_name;
+    
+    public ButtonPanel(String account_id) {
         
         this.setStyle("-fx-background-color:#000000;"
             + "-fx-border-color: #1CFF00;"
@@ -49,6 +55,59 @@ public class ButtonPanel extends VBox{
                 System.exit(0);
             }
         });
+        
+        
+        
+        
+        
+        
+        create_playlist.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                
+                playlist_name = null;
+                
+                Stage window = new Stage();
+                window.setTitle("New Playlist");
+                
+                GridPane gp = new GridPane();
+                gp.setStyle("-fx-background-color:#000000;"
+                    + "-fx-border-color: #1CFF00;"
+                    + "-fx-border-width: 1px;");
+                
+                TextField field = new TextField();
+                field.setPromptText("enter name..");
+                
+                Button button = setupColors(new Button("Create Playlist"));
+                button.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        playlist_name = field.getText();
+                    }
+                });
+                
+                gp.add(field, 1, 0);
+                gp.add(button, 1, 1);
+                
+                window.setScene(new Scene(gp,100,100));
+                window.showAndWait();
+                
+                Dispatcher d = new Dispatcher();
+                Proxy p = new Proxy(d);
+                
+                String[] params = {playlist_name, account_id};
+                JsonObject result = p.synchExecution("createPlaylist", params);
+                
+                String s = result.get("ret").getAsString();
+                System.out.println(s);
+            }
+        });
+        
+        
+        
+        
+        
+        
         
         
         this.getChildren().addAll(

@@ -30,7 +30,7 @@ public class Driver extends Application {
         // Breakpoint
         int i = 0;
         
-        PlayerWindow pw = new PlayerWindow(myAccount.getUsername());
+        PlayerWindow pw = new PlayerWindow(myAccount.getUsername(), myAccount.getID());
         
         //System.exit(0);
     }

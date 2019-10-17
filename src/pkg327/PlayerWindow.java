@@ -11,14 +11,14 @@ import javafx.stage.Stage;
  */
 public class PlayerWindow extends BorderPane{
     
-    public PlayerWindow(String username) {
+    public PlayerWindow(String username, String account_id) {
         
         this.setStyle("-fx-background-color:#000000;"
             + "-fx-border-color: #1CFF00;"
             + "-fx-border-width: 1px;");
         
         TitleBar top = new TitleBar(username);
-        ButtonPanel left = new ButtonPanel();
+        ButtonPanel left = new ButtonPanel(account_id);
         Page center = new Page();
         
         this.setTop(top);
