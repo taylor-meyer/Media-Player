@@ -1,13 +1,7 @@
 
 package pkg327;
 
-import com.google.gson.JsonObject;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -16,10 +10,17 @@ import javafx.stage.Stage;
  */
 public class Driver extends Application {
     
+    Proxy p;
+    Dispatcher d;
+    
     @Override
     public void start(Stage primaryStage) {
         
+        d = new Dispatcher();
+        p = new Proxy(d);
+        
         LoginServices ls = new LoginServices();
+        PlaylistServices ps = new PlaylistServices();
         
         Account myAccount = null;
         for (Account A : ls.getAccounts()) {
@@ -27,17 +28,26 @@ public class Driver extends Application {
                 myAccount = A;
         }
 
-        System.out.println("Name:" + myAccount.getUsername());
-        System.out.println("Name:" + myAccount.getPassword());
+        //System.out.println("Name:" + myAccount.getUsername());
+        //System.out.println("Name:" + myAccount.getPassword());
         
+        String s = "test";
         
-       
-        // Break
+        // Breakpoint
         int i = 0;
         
+        //ps.createPlaylist(s, myAccount.getID());
+        //ps.deletePlaylist(s, myAccount.getID());
+        //ps.addSongToPlaylist(5565, "a", myAccount.getID());
+        //ps.removeSongFromPlaylist(555, "a", myAccount.getID());
+        
+        
+        //String[] params = {s, myAccount.getID()};
+        //JsonObject result = p.synchExecution("createPlaylist", params);
+        //String s2 = result.get("ret").getAsString();
+        //System.out.println(s2);
+        
         System.exit(0);
-        
-        
     }
 
     /**
@@ -46,5 +56,4 @@ public class Driver extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
 }

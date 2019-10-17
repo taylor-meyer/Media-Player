@@ -2,14 +2,20 @@
   {
     "username": "TaylorM",
     "password": "asdf",
-	"id": "1234",
+    "id": "1234",
     "playlists": [
       {
         "name": "a",
-        "idList": [
+        "id_list": [
           57315,
-          300848
+          300848,
+          3492182,
+          5565
         ]
+      },
+      {
+        "name": "newplaylist2222",
+        "id_list": []
       }
     ]
   }

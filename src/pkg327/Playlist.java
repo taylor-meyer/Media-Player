@@ -18,7 +18,7 @@ public class Playlist {
     // Playlist name.
     private String name;
     // ArrayList of ID numbers;
-    private ArrayList<Integer> idList;
+    private ArrayList<Integer> id_list;
     
     /**
      * Constructor.
@@ -29,7 +29,7 @@ public class Playlist {
      */
     public Playlist(String name, ArrayList<Integer> idList){
         
-         this.idList = idList;
+         this.id_list = idList;
          this.name = name;
     }
     
@@ -41,7 +41,7 @@ public class Playlist {
      */
     public Playlist(String name){
          this.name = name;
-         idList = new ArrayList();
+         id_list = new ArrayList();
     }
     
     /**
@@ -49,7 +49,7 @@ public class Playlist {
      * @return 
      */
     public ArrayList<Integer> getList(){
-        return this.idList;
+        return this.id_list;
     }
     
     /**
@@ -74,7 +74,7 @@ public class Playlist {
      * @param i the ID number.
      */
     public void addSong(int i){
-        this.idList.add(i);
+        this.id_list.add(i);
     }
     
     /**
@@ -83,6 +83,6 @@ public class Playlist {
      * @param i the ID number.
      */
     public void removeSong(int i){
-        this.idList.remove(Integer.valueOf(i));
+        this.id_list.remove(Integer.valueOf(i));
     }
 }

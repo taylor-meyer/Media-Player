@@ -25,7 +25,7 @@ public class Dispatcher implements DispatcherInterface {
 
     HashMap<String, Object> ListOfObjects;
     LoginServices loginServices = new LoginServices();
-    //PlaylistServices playlistServices = new PlaylistServices();
+    PlaylistServices playlistServices = new PlaylistServices();
 
     public Dispatcher() {
         ListOfObjects = new HashMap<String, Object>();
@@ -55,13 +55,15 @@ public class Dispatcher implements DispatcherInterface {
         if(classType.equals("LoginServices"))
             this.registerObject(loginServices, "LoginServices");
         
-        //else if(classType.equals("PlaylistServices"))
-            //this.registerObject(playlistServices, "PlaylistServices");
+        else if(classType.equals("PlaylistServices")) {
+            System.out.println("insid elif");
+            this.registerObject(playlistServices, "PlaylistServices");
+        }
 
         try {
             // Obtains the object pointing to SongServices
             Object object = ListOfObjects.get(jsonRequest.get("objectName").getAsString());
-            System.out.println(object.getClass());
+            System.out.println("fff" + object.getClass());
             Method[] methods = object.getClass().getMethods();
             Method method = null;
 

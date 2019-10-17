@@ -41,10 +41,14 @@ public class PlaylistServices {
      */
     public void createPlaylist(String playlist_name, String account_id) {
         
-        Account A = this.getAccount(account_id);
+        System.out.println("inside cP");
+        
+        ArrayList<Account> list = this.getAccountList(account_id);
+        Account A = this.getAccount(account_id, list);
         
         A.getPlaylists().add(new Playlist(playlist_name));
         
+        this.save(list);
     }
     
     /**
@@ -53,13 +57,16 @@ public class PlaylistServices {
      */
     public void deletePlaylist(String playlist_name, String account_id) {
         
-        Account A = this.getAccount(account_id);
+        ArrayList<Account> list = this.getAccountList(account_id);
+        Account A = this.getAccount(account_id, list);
         
         for (Playlist p : A.getPlaylists()) {
-            if (p.getName().toLowerCase().equals(playlist_name.toLowerCase())) {
+            if (p.getName().equals(playlist_name)) {
                 A.getPlaylists().remove(p);
+                break;
             }
         }
+        this.save(list);
     }
     
     /**
@@ -70,13 +77,16 @@ public class PlaylistServices {
      */
     public void addSongToPlaylist(int id, String playlist_name, String account_id) {
         
-        Account A = this.getAccount(account_id);
+        ArrayList<Account> list = this.getAccountList(account_id);
+        Account A = this.getAccount(account_id, list);
         
         for (Playlist p : A.getPlaylists()) {
             if (p.getName().toLowerCase().equals(playlist_name.toLowerCase())) {
                 p.addSong(id);
+                break;
             }
         }
+        this.save(list);
     }
     
     /**
@@ -88,13 +98,16 @@ public class PlaylistServices {
      */
     public void removeSongFromPlaylist(int id, String playlist_name, String account_id) {
         
-        Account A = this.getAccount(account_id);
+        ArrayList<Account> list = this.getAccountList(account_id);
+        Account A = this.getAccount(account_id, list);
         
         for (Playlist p : A.getPlaylists()) {
             if (p.getName().toLowerCase().equals(playlist_name.toLowerCase())) {
                 p.removeSong(id);
+                break;
             }
         }
+        this.save(list);
     }
     
     /**
@@ -105,7 +118,8 @@ public class PlaylistServices {
      */
     public Playlist getPlaylist(int i, String account_id) {
         
-        Account A = this.getAccount(account_id);
+        ArrayList<Account> list = this.getAccountList(account_id);
+        Account A = this.getAccount(account_id, list);
         
         return A.getPlaylists().get(i);
     }
@@ -118,7 +132,8 @@ public class PlaylistServices {
      */
     public Playlist getPlaylist(String playlist_name, String account_id) {
         
-        Account A = this.getAccount(account_id);
+        ArrayList<Account> list = this.getAccountList(account_id);
+        Account A = this.getAccount(account_id, list);
         
         for (Playlist p : A.getPlaylists()) {
             if (p.getName().toLowerCase().equals(playlist_name.toLowerCase())) {
@@ -128,24 +143,44 @@ public class PlaylistServices {
         return null;
     }
     
-    private Account getAccount(String id) {
+    private ArrayList<Account> getAccountList(String id) {
         
         TypeToken<List<Account>> token = new TypeToken<List<Account>>() {};
-        ArrayList<Account> account_list = new ArrayList();
+        ArrayList<Account> list = new ArrayList();
         
         try {
             // File read object.
             Reader read = new FileReader("accounts.json");
             // GSON
-            account_list = new Gson().fromJson(read, token.getType());
+            list = new Gson().fromJson(read, token.getType());
         } catch (IOException e) {
             e.printStackTrace();
         }
         
-        for (Account A : account_list) {
+        return list;
+    }
+    
+    private Account getAccount(String id, ArrayList<Account> list) {
+        
+        for (Account A : list) {
             if (A.getID().equals(id))
                 return A;
         }
         return null;
+    }
+    
+    private void save(ArrayList<Account> list) {
+        // Create JSON to save to file using GSON.
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        // Create JSON with GSON.
+        String jsonLine = gson.toJson(list);
+        try{
+            // Create writer, write, close.
+            FileWriter write = new FileWriter("accounts.json", false);
+            write.write(jsonLine);
+            write.close();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 }
