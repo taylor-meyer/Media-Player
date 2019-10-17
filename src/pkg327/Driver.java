@@ -13,14 +13,8 @@ import javafx.stage.Stage;
  */
 public class Driver extends Application {
     
-    Proxy p;
-    Dispatcher d;
-    
     @Override
     public void start(Stage primaryStage) {
-        
-        d = new Dispatcher();
-        p = new Proxy(d);
         
         LoginServices ls = new LoginServices();
         PlaylistServices ps = new PlaylistServices();
@@ -37,29 +31,18 @@ public class Driver extends Application {
         // Breakpoint
         int i = 0;
         
+        GridPane gp = new GridPane();
         
-        String playlistname = "a";
-        int id = 10;
+        AddButton ab = new AddButton();
+        
+        gp.add(ab, 0, 0);
+        Scene scene = new Scene(gp,300,300);
+        
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
 
-        String[] params = {Integer.toString(id), playlistname, myAccount.getID()};
-        JsonObject result = p.synchExecution("removeSongFromPlaylist", params);
-        
-        String s = result.get("ret").getAsString();
-        System.out.println(s);
-        
-        
-//        GridPane gp = new GridPane();
-//        
-//        TitleBar tb = new TitleBar(myAccount.getUsername());
-//        
-//        gp.add(tb, 0, 0);
-//        Scene scene = new Scene(gp,300,300);
-//        
-//        Stage stage = new Stage();
-//        stage.setScene(scene);
-//        stage.show();
-
-        System.exit(0);
+        //System.exit(0);
     }
 
     /**
@@ -69,3 +52,15 @@ public class Driver extends Application {
         launch(args);
     }
 }
+
+// Proxy method
+/*
+        Dispatcher d = new Dispatcher();
+        Proxy p = new Proxy(d);
+
+        String[] params = {Integer.toString(id), playlistname, myAccount.getID()};
+        JsonObject result = p.synchExecution("removeSongFromPlaylist", params);
+        
+        String s = result.get("ret").getAsString();
+        System.out.println(s);
+*/
