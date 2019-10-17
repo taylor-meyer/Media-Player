@@ -32,15 +32,25 @@ public class Driver extends Application {
         int i = 0;
         
         GridPane gp = new GridPane();
+        PageBar pb = new PageBar();
+        gp.add(pb, 0, 0);
         
-        ButtonPanel bp = new ButtonPanel();
-        
-        gp.add(bp, 0, 0);
         Scene scene = new Scene(gp,300,300);
-        
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
+        
+        
+        
+        
+        GridPane gp2 = new GridPane();
+        ButtonPanel bp = new ButtonPanel();
+        gp2.add(bp, 0, 0);
+        
+        Scene scene2 = new Scene(gp2,300,300);
+        Stage stage2 = new Stage();
+        stage2.setScene(scene2);
+        stage2.show();
 
         //System.exit(0);
     }
