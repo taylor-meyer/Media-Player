@@ -1,10 +1,7 @@
 
 package pkg327;
 
-import com.google.gson.JsonObject;
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 /**

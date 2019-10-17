@@ -1,3 +1,4 @@
+
 package pkg327;
 
 /**
@@ -7,7 +8,6 @@ package pkg327;
  * @version 0.15
  * @since 2019-01-24
  */
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import static java.lang.Integer.parseInt;
