@@ -24,6 +24,7 @@ public class ButtonPanel extends VBox{
         Button norm = this.setupColors(new Button("Norm"));
         Button alpha = this.setupColors(new Button("Alpha"));
         Button rand = this.setupColors(new Button("Rand"));
+        Button stop = this.setupColors(new Button("Stop"));
         Button create_playlist = this.setupColors(new Button("New Playlist"));
         Button delete_playlist = this.setupColors(new Button("Del Playlist"));
         
@@ -54,6 +55,7 @@ public class ButtonPanel extends VBox{
                 norm,
                 alpha,
                 rand,
+                stop,
                 song_search_field,
                 song_search_button,
                 artist_search_field,

@@ -27,7 +27,7 @@ public class PlayerWindow extends BorderPane{
         
         Stage stage = new Stage();
         stage.setTitle("Media Player");
-        stage.setScene(new Scene(this, 1000, 720));
+        stage.setScene(new Scene(this, 1240, 800));
         stage.show();
     }
 }

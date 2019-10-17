@@ -2,6 +2,8 @@
 package pkg327;
 
 import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 /**
@@ -29,7 +31,7 @@ public class Driver extends Application {
         int i = 0;
         
         PlayerWindow pw = new PlayerWindow(myAccount.getUsername());
-
+        
         //System.exit(0);
     }
 
