@@ -38,20 +38,14 @@ public class Driver extends Application {
         int i = 0;
         
         
-        String testString = "test";
-    
-        String[] params = {testString, myAccount.getID()};
-        
-        JsonObject result = p.synchExecution("deletePlaylist", params);
-        String s = result.get("ret").getAsString();
-        
-        System.out.println(s);
+        String playlistname = "a";
+        int id = 10;
 
+        String[] params = {Integer.toString(id), playlistname, myAccount.getID()};
+        JsonObject result = p.synchExecution("removeSongFromPlaylist", params);
         
-        
-        
-        
-        
+        String s = result.get("ret").getAsString();
+        System.out.println(s);
         
         
 //        GridPane gp = new GridPane();

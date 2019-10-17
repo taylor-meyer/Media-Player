@@ -99,13 +99,16 @@ public class Dispatcher implements DispatcherInterface {
                 strParam[j++] = entry.getValue().getAsString();
             }
             
+            
+            
             for (int i = 0; i < types.length; i++) {
 
                 switch (types[i].getCanonicalName()) {
                     case "java.lang.Long":
                         parameter[i] = Long.parseLong(strParam[i]);
                         break;
-                    case "java.lang.Integer":
+//                    case "java.lang.Integer":
+                    case "int":
                         parameter[i] = Integer.parseInt(strParam[i]);
                         break;
                     case "java.lang.String":
@@ -115,7 +118,7 @@ public class Dispatcher implements DispatcherInterface {
             }
             
             Class returnType = method.getReturnType();
-            System.out.println(returnType);
+            System.out.println("\n\nReturn type: " + returnType + "\n\n");
 
             String ret = "";
 
