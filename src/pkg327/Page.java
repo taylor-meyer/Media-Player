@@ -33,25 +33,24 @@ import javazoom.jl.decoder.JavaLayerException;
  *
  * @author taylo
  */
-public class PlayerWindow extends BorderPane{
+public class Page extends VBox{
     
-    public PlayerWindow(String username) {
+    public Page() {
         
         this.setStyle("-fx-background-color:#000000;"
             + "-fx-border-color: #1CFF00;"
             + "-fx-border-width: 1px;");
         
-        TitleBar top = new TitleBar(username);
-        ButtonPanel left = new ButtonPanel();
-        Page center = new Page();
+        for (int i = 0; i < 15; i++) {
+            Button b = new PlayButton();
+            this.getChildren().add(b);
+            
+            if (i == 14)
+                this.setMargin(b, new Insets(0, 0, 70, 0));
+            else
+                this.setMargin(b, new Insets(0, 0, 10, 0));
+        }
         
-        this.setTop(top);
-        this.setLeft(left);
-        this.setCenter(center);
-        
-        Stage stage = new Stage();
-        stage.setTitle("Media Player");
-        stage.setScene(new Scene(this, 1000, 720));
-        stage.show();
+        this.getChildren().add(new PageBar());
     }
 }
