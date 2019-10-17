@@ -33,9 +33,9 @@ public class Driver extends Application {
         
         GridPane gp = new GridPane();
         
-        AddButton ab = new AddButton();
+        ButtonPanel bp = new ButtonPanel();
         
-        gp.add(ab, 0, 0);
+        gp.add(bp, 0, 0);
         Scene scene = new Scene(gp,300,300);
         
         Stage stage = new Stage();
