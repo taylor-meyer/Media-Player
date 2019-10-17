@@ -1,7 +1,10 @@
 
 package pkg327;
 
+import com.google.gson.JsonObject;
 import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 /**
@@ -42,12 +45,19 @@ public class Driver extends Application {
         //ps.removeSongFromPlaylist(555, "a", myAccount.getID());
         
         
-        //String[] params = {s, myAccount.getID()};
-        //JsonObject result = p.synchExecution("createPlaylist", params);
-        //String s2 = result.get("ret").getAsString();
-        //System.out.println(s2);
         
-        System.exit(0);
+        GridPane gp = new GridPane();
+        
+        
+        PlayButton pb = new PlayButton();
+        
+        gp.add(pb, 0, 0);
+        Scene scene = new Scene(gp,300,300);
+        
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        //System.exit(0);
     }
 
     /**
