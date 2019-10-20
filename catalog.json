@@ -110,5 +110,21 @@
       ],
       "callSemantic":"Maybe",
       "returnType":"void"
+   },
+   {
+      "remoteMethod":"getPlaylist",
+      "objectName":"PlaylistServices",
+      "Params":[
+         {
+            "name":"playlist_name",
+            "type":"String"
+         },
+         {
+            "name":"account_id",
+            "type":"String"
+         }
+      ],
+      "callSemantic":"Maybe",
+      "returnType":"String"
    }
 ]

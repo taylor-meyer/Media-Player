@@ -1,6 +1,7 @@
 
 package pkg327;
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
@@ -10,6 +11,8 @@ import javafx.scene.input.MouseEvent;
  * @author taylo
  */
 public class PlayButton extends Button{
+    
+    static PlayAudioThread thread = null;
     
     public PlayButton() {
         
@@ -41,5 +44,18 @@ public class PlayButton extends Button{
             + "-fx-border-width: 1px;");
           }
         });
+        
+        this.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    
+                    if (thread != null)
+                        thread.stopRunning();
+                    thread = new PlayAudioThread();
+                    thread.setDaemon(true);
+                    System.out.println("D: " + thread.isDaemon());
+                    thread.start();
+                }
+            });
     }
 }

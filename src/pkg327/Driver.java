@@ -2,6 +2,11 @@
 package pkg327;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 /**
@@ -25,24 +30,27 @@ public class Driver extends Application {
 
         System.out.println("Name:" + myAccount.getUsername());
         System.out.println("Name:" + myAccount.getPassword());
-*/        
+        */        
+        
         // Breakpoint
         int i = 0;
         
-        //PlayerWindow pw = new PlayerWindow(myAccount.getUsername(), myAccount.getID());
         
-        
+        //String acctid = "1234"; // temp to test, would get from login services
+        //String username = "TaylorM"; // temp to test, would get from login services
+        //PlayerWindow pw = new PlayerWindow(username, acctid);
         
         
         /*
-        String testString = "a";
+        String playName = "a";
         String id = "1234";
-        int songId = 55;
         
         Dispatcher d = new Dispatcher();
         Proxy p = new Proxy(d);
 
-        String[] params = {Integer.toString(songId), testString, id};
+        String[] params = {playName, id};
+        JsonObject result = p.synchExecution("getPlaylist", params);
+        // create playlist object with result, which is a json string
         */
         
         /* THESE ALL WORK */
@@ -56,7 +64,32 @@ public class Driver extends Application {
         System.out.println(s);
         */
         
-        System.exit(0);
+        GridPane gp = new GridPane();
+        
+        Button hw = new Button();
+        hw.setText("hello world");
+        
+        hw.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    System.out.println("helloword");
+                }
+            });
+        
+        PlayButton B = new PlayButton();
+        PlayButton B2 = new PlayButton();
+        
+        gp.add(B, 1, 1);
+        gp.add(hw,1,2);
+        gp.add(B2, 1, 3);
+        
+        
+        Stage stage = new Stage();
+        stage.setTitle("Button Test");
+        stage.setScene(new Scene(gp,500,500));
+        stage.show();
+        
+        //System.exit(0);
     }
 
     /**
@@ -66,15 +99,3 @@ public class Driver extends Application {
         launch(args);
     }
 }
-
-// Proxy method
-/*
-        Dispatcher d = new Dispatcher();
-        Proxy p = new Proxy(d);
-
-        String[] params = {Integer.toString(id), playlistname, myAccount.getID()};
-        JsonObject result = p.synchExecution("removeSongFromPlaylist", params);
-        
-        String s = result.get("ret").getAsString();
-        System.out.println(s);
-*/

@@ -130,14 +130,14 @@ public class PlaylistServices {
      * @param s the name
      * @return Playlist
      */
-    public Playlist getPlaylist(String playlist_name, String account_id) {
+    public String getPlaylist(String playlist_name, String account_id) {
         
         ArrayList<Account> list = this.getAccountList(account_id);
         Account A = this.getAccount(account_id, list);
         
         for (Playlist p : A.getPlaylists()) {
             if (p.getName().toLowerCase().equals(playlist_name.toLowerCase())) {
-                return p;
+                // gson.tojson(p);  not sure about exact syntax
             }
         }
         return null;
