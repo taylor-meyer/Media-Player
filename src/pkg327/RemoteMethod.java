@@ -1,4 +1,3 @@
-
 package pkg327;
 
 import com.google.gson.Gson;
@@ -25,9 +24,8 @@ class RemoteMethod implements RemoteRefInterface {
 
     private void deserializeRemoteReferences() {
 
-//        try (Reader read = new FileReader("C:\\Users\\corni\\Desktop\\git-repos\\327-Media-Player\\a-Proxy"
-//                + "\\IsolatedClass\\catlogTEST.json")) {
         try (Reader read = new FileReader("catalog.json")) {
+//        try (Reader read = new FileReader("catlogTEST.json")) {
 
             catalogList = new Gson().fromJson(read, token.getType());
 

@@ -1,4 +1,3 @@
-
 package pkg327;
 
 /**
@@ -94,15 +93,12 @@ public class Dispatcher implements DispatcherInterface {
                 strParam[j++] = entry.getValue().getAsString();
             }
             
-            
-            
             for (int i = 0; i < types.length; i++) {
 
                 switch (types[i].getCanonicalName()) {
                     case "java.lang.Long":
                         parameter[i] = Long.parseLong(strParam[i]);
                         break;
-//                    case "java.lang.Integer":
                     case "int":
                         parameter[i] = Integer.parseInt(strParam[i]);
                         break;
@@ -122,7 +118,7 @@ public class Dispatcher implements DispatcherInterface {
                 case "java.lang.Long":
                     ret = method.invoke(object, parameter).toString();
                     break;
-                case "java.lang.Integer":
+                case "int":
                     ret = method.invoke(object, parameter).toString();
                     break;
                 case "java.lang.String":

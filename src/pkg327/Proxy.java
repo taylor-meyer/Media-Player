@@ -1,4 +1,3 @@
-
 package pkg327;
 
 /**
@@ -15,6 +14,7 @@ import static java.lang.Integer.parseInt;
 public class Proxy implements ProxyInterface {
 
     Dispatcher dispacher;   // This is only for test. it should use the Communication  Module
+    CommClient commClient = new CommClient();
 
     public Proxy(Dispatcher dispacher) {
         this.dispacher = dispacher;
@@ -63,7 +63,13 @@ public class Proxy implements ProxyInterface {
 
         System.out.println("JsonRequest sent to dispatcher: " + jsonRequest.toString() + "\n\n");
 
-        String s = dispacher.dispatch(jsonRequest.toString());
+        //String s = dispacher.dispatch(jsonRequest.toString());
+        System.out.println("SANITY");
+        String s = commClient.sendToServer(jsonRequest.toString());
+        System.out.println("after");
+
+        s = s.trim(); // Trim whitespace
+        System.out.println("GOT STRING BACK: " + s);
         JsonObject jsonResponse = parser.parse(s).getAsJsonObject();
         System.out.println("jsonResponse: " + jsonResponse);
         return jsonResponse;

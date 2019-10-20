@@ -2,8 +2,6 @@
 package pkg327;
 
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 /**
@@ -15,9 +13,10 @@ public class Driver extends Application {
     @Override
     public void start(Stage primaryStage) {
         
-        LoginServices ls = new LoginServices();
-        PlaylistServices ps = new PlaylistServices();
+        //LoginServices ls = new LoginServices();
+        //PlaylistServices ps = new PlaylistServices();
         
+        /*
         Account myAccount = null;
         for (Account A : ls.getAccounts()) {
             if (A.getUsername().equals("TaylorM"))
@@ -26,13 +25,38 @@ public class Driver extends Application {
 
         System.out.println("Name:" + myAccount.getUsername());
         System.out.println("Name:" + myAccount.getPassword());
-        
+*/        
         // Breakpoint
         int i = 0;
         
-        PlayerWindow pw = new PlayerWindow(myAccount.getUsername(), myAccount.getID());
+        //PlayerWindow pw = new PlayerWindow(myAccount.getUsername(), myAccount.getID());
         
-        //System.exit(0);
+        
+        
+        
+        /*
+        String testString = "a";
+        String id = "1234";
+        int songId = 55;
+        
+        Dispatcher d = new Dispatcher();
+        Proxy p = new Proxy(d);
+
+        String[] params = {Integer.toString(songId), testString, id};
+        */
+        
+        /* THESE ALL WORK */
+        //JsonObject result = p.synchExecution("deletePlaylist", params);
+        //JsonObject result = p.synchExecution("createPlaylist", params);
+        //JsonObject result = p.synchExecution("addSongToPlaylist", params);
+        //JsonObject result = p.synchExecution("removeSongFromPlaylist", params);
+        
+        /*
+        String s = result.get("ret").getAsString();
+        System.out.println(s);
+        */
+        
+        System.exit(0);
     }
 
     /**
