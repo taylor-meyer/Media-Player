@@ -126,5 +126,29 @@
       ],
       "callSemantic":"Maybe",
       "returnType":"String"
+   },
+   {
+      "remoteMethod":"getNormalPage",
+      "objectName":"MusicServices",
+      "Params":[
+         {
+            "name":"index",
+            "type":"int"
+         }
+      ],
+      "callSemantic":"Maybe",
+      "returnType":"String"
+   },
+   {
+      "remoteMethod":"getAlphaPage",
+      "objectName":"MusicServices",
+      "Params":[
+         {
+            "name":"index",
+            "type":"int"
+         }
+      ],
+      "callSemantic":"Maybe",
+      "returnType":"String"
    }
 ]

@@ -18,9 +18,12 @@ import javafx.stage.Stage;
  */
 public class ButtonPanel extends VBox{
     
-    String playlist_name;
+    private PlayerWindow pw;
+    private String playlist_name;
     
-    public ButtonPanel(String account_id) {
+    public ButtonPanel(String account_id, PlayerWindow pw) {
+        
+        this.pw = pw;
         
         this.setStyle("-fx-background-color:#000000;"
             + "-fx-border-color: #1CFF00;"
@@ -28,7 +31,25 @@ public class ButtonPanel extends VBox{
         
         
         Button norm = this.setupColors(new Button("Norm"));
+        norm.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    
+                    pw.getPage().makeNormalPages(0);
+                    
+                }
+            });
+        
         Button alpha = this.setupColors(new Button("Alpha"));
+        alpha.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    
+                    pw.getPage().makeAlphaPages(0);
+                    
+                }
+            });
+        
         Button rand = this.setupColors(new Button("Rand"));
         Button stop = this.setupColors(new Button("Stop"));
         Button create_playlist = this.setupColors(new Button("New Playlist"));

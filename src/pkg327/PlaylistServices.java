@@ -135,12 +135,28 @@ public class PlaylistServices {
         ArrayList<Account> list = this.getAccountList(account_id);
         Account A = this.getAccount(account_id, list);
         
+        ArrayList<MusicMeta> meta = new ArrayList();
+        Playlist P = null;
+        
         for (Playlist p : A.getPlaylists()) {
-            if (p.getName().toLowerCase().equals(playlist_name.toLowerCase())) {
-                // gson.tojson(p);  not sure about exact syntax
+            if (p.getName().equals(playlist_name)) {
+                P = p;
+                break;
             }
         }
-        return null;
+        
+        MusicServices ms = new MusicServices();
+        
+        for(int id : P.getList()) {
+            for(MusicMeta M : ms.getMetaData()) {
+                if (M.getRelease().getId() == id) {
+                    meta.add(M);
+                    break;
+                }
+            }
+        }
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(meta);
     }
     
     private ArrayList<Account> getAccountList(String id) {

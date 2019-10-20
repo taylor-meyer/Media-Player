@@ -13,14 +13,17 @@ import javafx.scene.layout.HBox;
  */
 public class PageBar extends HBox{
     
+    private Button prev;
+    private Button next;
+    
     public PageBar() {
         
         this.setStyle("-fx-background-color:#000000;"
             + "-fx-border-color: #1CFF00;"
             + "-fx-border-width: 1px;");
         
-        Button prev = this.setupColors(new Button("Prev"));
-        Button next = this.setupColors(new Button("Next"));
+        prev = this.setupColors(new Button("Prev"));
+        next = this.setupColors(new Button("Next"));
         
         this.getChildren().addAll(prev, next);
         this.setMargin(next, new Insets(0, 0, 0, 10));
@@ -57,4 +60,22 @@ public class PageBar extends HBox{
         
         return b;
     }
+    
+    public Button getPrevButton() {
+        return this.prev;
+    }
+    
+    public Button getNextButton() {
+        return this.next;
+    }
+    
+    /*
+    public int getPageCount() {
+        return this.page_count;
+    }
+    
+    public void setPageCount(int page_count) {
+        this.page_count = page_count;
+    }
+    */
 }

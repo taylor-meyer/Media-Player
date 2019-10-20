@@ -111,4 +111,40 @@ public class MusicServices {
         }
         return null;
     }
+    
+    public String getNormalPage(int index) {
+        
+        ArrayList<MusicMeta> page = new ArrayList();
+        
+        int i = index * 15;
+        int stop = i + 15;
+        
+        // tried to do this in a for loop but it wasnt really working out
+        while(i != (stop-1)) {
+            page.add(this.meta_data_unsorted.get(i));
+            i++;
+        }
+        
+        
+        Gson gson = new Gson();
+        return gson.toJson(page);
+    }
+    
+    public String getAlphaPage(int index) {
+        
+        ArrayList<MusicMeta> page = new ArrayList();
+        
+        int i = index * 15;
+        int stop = i + 15;
+        
+        // tried to do this in a for loop but it wasnt really working out
+        while(i != (stop-1)) {
+            page.add(this.meta_data_sorted.get(i));
+            i++;
+        }
+        
+        
+        Gson gson = new Gson();
+        return gson.toJson(page);
+    }
 }
